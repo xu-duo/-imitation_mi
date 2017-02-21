@@ -47,6 +47,16 @@ $(function(){
         },2000)
     }).trigger("mouseleave");
 
+    function showImg(index){
+        var $obj = $("#slide_card");
+        var $list = $obj.find("span");
+        var newList = $list.eq(index).attr("list");
+        $("#pic a").attr("list",newList).find("img").eq(index)
+            .stop(true,true).show().siblings().hide();
+        $list.removeClass("active").css("opacity","0.7").eq(index)
+            .addClass("active").css("opacity","1");
+    }
+
     //购物车
     var $cart = $("#cart");
     var $cart_list = $("#cart_list");
@@ -81,6 +91,16 @@ $(function(){
         $more_product.slideUp();
         $product_list.removeClass("active");
     });
+
+    function product(index){
+        var $product_list = $("#ac .ab");
+        var $more_product = $("#product_more");
+        var newList = $product_list.eq(index).attr("list");
+        $more_product.attr("list",newList).find(".more_list").eq(index)
+            .stop(true,true).show().siblings().hide();
+        $product_list.removeClass("active").eq(index)
+            .addClass("active");
+    }
 
     //侧边商品列表弹出
     $parent_li = $(".parent_ul .parent_li");
@@ -243,34 +263,18 @@ $(function(){
         $(this).addClass("active").siblings().removeClass("active");
     });
 
+    function move(index){
+        var $move_content = $("#move_content .page span");
+        var $add = $("#move_content li");
+        var newList = $move_content.eq(index).attr("list");
+        $add.attr("list",newList).find(".add").eq(index)
+            .stop(true,true).show().siblings().hide();
+        console.log("eeee");
+    }
 });
 
-function showImg(index){
-    var $obj = $("#slide_card");
-    var $list = $obj.find("span");
-    var newList = $list.eq(index).attr("list");
-    $("#pic a").attr("list",newList).find("img").eq(index)
-        .stop(true,true).show().siblings().hide();
-    $list.removeClass("active").css("opacity","0.7").eq(index)
-        .addClass("active").css("opacity","1");
-}
 
-function product(index){
-    var $product_list = $("#ac .ab");
-    var $more_product = $("#product_more");
-    var newList = $product_list.eq(index).attr("list");
-    $more_product.attr("list",newList).find(".more_list").eq(index)
-        .stop(true,true).show().siblings().hide();
-    $product_list.removeClass("active").eq(index)
-        .addClass("active");
-}
 
-function move(index){
-    var $move_content = $("#move_content .page span");
-    var $add = $("#move_content li");
-    var newList = $move_content.eq(index).attr("list");
-    $add.attr("list",newList).find(".add").eq(index)
-        .stop(true,true).show().siblings().hide();
-    console.log("eeee");
-}
+
+
 
